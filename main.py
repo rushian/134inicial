@@ -16,7 +16,9 @@ def subtrair(numero_a, numero_b):
 def multiplicar(numero_a, numero_b):
     return numero_a * numero_b
 
-    ### PRIMEIRA CHAMADA DE METODO ####
+    ### Primeira chamada de metodo ####
+
+
 if __name__ == '__main__':
     imprimir_oi('Luciano')
 
@@ -57,7 +59,7 @@ if __name__ == '__main__':
                     resultado = multiplicar(n_a, n_b)
 
             print(f'{n_a} {oper} {n_b} = {resultado}')
-            ## limpando oper pro caso de enviarem vazio no numero da operacao
+            # limpando oper pro caso de enviarem vazio no numero da operacao
             oper = ''
 
 
