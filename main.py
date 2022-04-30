@@ -16,15 +16,13 @@ def subtrair(numero_a, numero_b):
 def multiplicar(numero_a, numero_b):
     return numero_a * numero_b
 
-
+    ### PRIMEIRA CHAMADA DE METODO ####
 if __name__ == '__main__':
     imprimir_oi('Luciano')
 
     print('Caminho do arquivo', __file__)
 
-    # -----------------------
-
-    # -----------------------
+    #### Inicio calculadora ####
     oper = ''
     print('#### CALCULADORA ####')
     print('1. Adição')
@@ -58,7 +56,8 @@ if __name__ == '__main__':
                 case '3':
                     resultado = multiplicar(n_a, n_b)
 
-            print(f'{n_a}{oper}{n_b} = {resultado}')
+            print(f'{n_a} {oper} {n_b} = {resultado}')
+            ## limpando oper pro caso de enviarem vazio no numero da operacao
             oper = ''
 
 
