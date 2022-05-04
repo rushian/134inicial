@@ -16,7 +16,15 @@ def subtrair(numero_a, numero_b):
 def multiplicar(numero_a, numero_b):
     return numero_a * numero_b
 
-    ### Primeira chamada de metodo ####
+
+def dividir(numero_a, numero_b):
+    try:
+        return numero_a / numero_b
+    except ZeroDivisionError:
+        return 'quociente zero nao gera resultado'
+
+
+### Primeira chamada de metodo ####
 
 
 if __name__ == '__main__':
@@ -30,6 +38,7 @@ if __name__ == '__main__':
     print('1. Adição')
     print('2. Subtração')
     print('3. Multiplicação')
+    print('4. Divisão')
     print('0. Sair')
 
     while True:
@@ -41,6 +50,8 @@ if __name__ == '__main__':
                 oper = '-'
             case '3':
                 oper = '*'
+            case '4':
+                oper = '/'
             case '0':
                 print('Fim da execução')
                 break
@@ -57,40 +68,9 @@ if __name__ == '__main__':
                     resultado = subtrair(n_a, n_b)
                 case '3':
                     resultado = multiplicar(n_a, n_b)
+                case '4':
+                    resultado = dividir(n_a, n_b)
 
             print(f'{n_a} {oper} {n_b} = {resultado}')
             # limpando oper pro caso de enviarem vazio no numero da operacao
             oper = ''
-
-
-def test_somar():
-    # 1 - Configura
-    num_a = 85
-    num_b = 8
-    resultado_esperado = 93
-    # 2 - Executa
-    resultado_obtido = somar(num_a, num_b)
-    # 3 - Valida
-    assert resultado_obtido == resultado_esperado
-
-
-def test_subtrair():
-    # 1 - Configura
-    num_a = 5
-    num_b = 8
-    resultado_esperado = -3
-    # 2 - Executa
-    resultado_obtido = subtrair(num_a, num_b)
-    # 3 - Valida
-    assert resultado_obtido == resultado_esperado
-
-
-def test_multiplicar():
-    # 1 - Configura
-    num_a = 2
-    num_b = 9
-    resultado_esperado = 18
-    # 2 - Executa
-    resultado_obtido = multiplicar(num_a, num_b)
-    # 3 - Valida
-    assert resultado_obtido == resultado_esperado
