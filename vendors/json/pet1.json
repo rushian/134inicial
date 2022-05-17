@@ -1,0 +1,22 @@
+{
+  "id": 771305,
+  "category": {
+    "id": 71,
+    "name": "dog"
+  },
+  "name": "luki",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 71,
+      "name": "medio porte"
+    },
+    {
+      "id": 72,
+      "name": "vacinado"
+    }
+  ],
+  "status": "available"
+}
