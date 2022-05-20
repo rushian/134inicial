@@ -1,0 +1,5 @@
+pet_id,category_id,category_name,pet_name,tags_id,tags_name,status
+7730501,71,cachorro,Luna,1,vacinado,available
+7730502,72,gato,Mel,2,castrado,available
+7730503,73,peixe,Nemo,3,registrado,pending
+7730504,71,cachorro,Thor,4,medio porte,available
