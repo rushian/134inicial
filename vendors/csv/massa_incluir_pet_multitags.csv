@@ -2,4 +2,4 @@ pet_id,category_id,category_name,pet_name,tags,status
 7730501,61,cachorro,Luna,"71,vacinado;72,pequeno porte;73,castrado",available
 7730502,62,gato,Mel,"73,castrado",available
 7730503,63,peixe,Nemo,"3,registrado",pending
-7730504,61,cachorro,Thor,"72,medio porte;75,adestrado",available
+7730504,61,cachorro,Thor,"75,medio porte;76,adestrado",available
