@@ -1,7 +1,6 @@
 # bibliotecas
 import json
 import os
-
 import pytest
 import requests
 from tests.utils.file_manager import ler_csv
@@ -34,7 +33,7 @@ def teste_incluir_pet():
     print(f'\nResultado obtido: ', resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     # print(f'\nCorpo do resultado obtido: \n', corpo_do_resultado_obtido)
-    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=3))
+    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=4))
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
     assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
@@ -64,7 +63,7 @@ def teste_consultar_pet():
     print(f'\nResultado obtido: ', resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     # print(f'\nCorpo do resultado obtido: \n', corpo_do_resultado_obtido)
-    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=3))
+    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=4))
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
     assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
@@ -95,8 +94,7 @@ def teste_alterar_pet():
     # valida
     print(f'\nResultado obtido: ', resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
-    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=3))
-
+    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=4))
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
     assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
@@ -125,7 +123,7 @@ def teste_excluir_pet():
     print(f'\nResultado obtido: ', resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     # print(f'\nCorpo do resultado obtido: \n', corpo_do_resultado_obtido)
-    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=3))
+    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=4))
     assert corpo_do_resultado_obtido['code'] == status_code_esperado
     assert corpo_do_resultado_obtido['type'] == tipo_esperado
     assert corpo_do_resultado_obtido['message'] == messagem_esperada
@@ -170,21 +168,19 @@ def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tag
     )
 
     # Valida
-
-    print(f'\nCORPO: \n', json.dumps(corpo_json, indent=3))
+    print(f'\nCORPO: \n', json.dumps(corpo_json, indent=4))
     print(f'\nResultado obtido: ', resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
-    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=3))
+    print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=4))
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == int(pet_id)
     assert corpo_do_resultado_obtido['name'] == pet_name
     assert corpo_do_resultado_obtido['category']['name'] == category_name
     assert corpo_do_resultado_obtido['tags'][0]['name'] == tags_name
 
-
+#comando para determinar diretorio onde inicial a referencia de caminho relativo
 os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
-
-
+#lita utilizando o separador do sistema para caminho relativo
 @pytest.mark.parametrize('pet_id,category_id,category_name,pet_name,tags,status',
                          ler_csv(f'vendors{os.sep}csv{os.sep}massa_incluir_pet_multitags.csv'))
 def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_name, pet_name, tags, status):
@@ -221,9 +217,11 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
         # print(f'\nExistem  {itens_lista} tags na lista {sub_lista_tags}')
         for contador in range(0, itens_lista):
             if contador < itens_lista - 1:
-                json_tag += '{"id":' + sub_lista_tags[contador][0] + ',"name":"' + sub_lista_tags[contador][1] + '"},'
+                json_tag += '{"id":' + sub_lista_tags[contador][0] + \
+                            ',"name":"' + sub_lista_tags[contador][1] + '"},'
             else:
-                json_tag += '{"id":' + sub_lista_tags[contador][0] + ',"name":"' + sub_lista_tags[contador][1] + '"}'
+                json_tag += '{"id":' + sub_lista_tags[contador][0] + \
+                            ',"name":"' + sub_lista_tags[contador][1] + '"}'
     # 1.1.1.2 Quando há somente 1 tag, não é necessário usar o looping do FOR
     else:
         lista_tags = lista_tags.split(',')
@@ -252,16 +250,14 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
     mostrar_corpo_json = json.loads(corpo_json)
     print(f'\n==== CORPO ENVIADO ====')
     print(json.dumps(mostrar_corpo_json, indent=4))
-
     print(f'\n==== CORPO OBTIDO ====')
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(json.dumps(corpo_do_resultado_obtido, indent=4))
-
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == int(pet_id)
     assert corpo_do_resultado_obtido['name'] == pet_name
     assert corpo_do_resultado_obtido['category']['name'] == category_name
-    # asserts dinamicos de acordo com as tags existeentes
+    # asserts dinamicos de acordo com as tags existeentes para um pet
     if qtd_tags > 1:
         # print(f'\nExistem  {itens_lista} tags na lista {sub_lista_tags}')
         for i in range(0, qtd_tags):
@@ -270,3 +266,4 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
     else:
         # print(f'\nExiste 1 tag na lista {lista_tags}')
         assert corpo_do_resultado_obtido['tags'][0]['name'] == lista_tags[1]
+
