@@ -203,7 +203,7 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
     corpo_json += '"photoUrls": ['
     corpo_json += '"string"'
     corpo_json += '],'
-    #1.1.1.1 iteração das possiveis tags doo animal
+    # 1.1.1.1 iteração das possiveis tags doo animal
     lista_tags = tags
     json_tag = '"tags": ['
     sub_lista_tags = []
@@ -218,7 +218,7 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
             # Create an index range for l of n items:
             sub_lista_tags.append(lista_tags[i].split(','))
         itens_lista = len(sub_lista_tags)
-        #print(f'\nExistem  {itens_lista} tags na lista {sub_lista_tags}')
+        # print(f'\nExistem  {itens_lista} tags na lista {sub_lista_tags}')
         for contador in range(0, itens_lista):
             if contador < itens_lista - 1:
                 json_tag += '{"id":' + sub_lista_tags[contador][0] + ',"name":"' + sub_lista_tags[contador][1] + '"},'
@@ -228,7 +228,7 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
     else:
         lista_tags = lista_tags.split(',')
         json_tag += '{"id":' + lista_tags[0] + ',"name":"' + lista_tags[1] + '"}'
-        #print(f'\nExiste 1 tag na lista {lista_tags}')
+        # print(f'\nExiste 1 tag na lista {lista_tags}')
     json_tag += '],'
     # 1.1.2 Continuando a montagem do Json, com adicao das tags
     corpo_json += json_tag
@@ -263,11 +263,10 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
     assert corpo_do_resultado_obtido['category']['name'] == category_name
     # asserts dinamicos de acordo com as tags existeentes
     if qtd_tags > 1:
-        #print(f'\nExistem  {itens_lista} tags na lista {sub_lista_tags}')
+        # print(f'\nExistem  {itens_lista} tags na lista {sub_lista_tags}')
         for i in range(0, qtd_tags):
             for j in range(2):
                 assert corpo_do_resultado_obtido['tags'][i]['name'] == sub_lista_tags[i][1]
     else:
-        #print(f'\nExiste 1 tag na lista {lista_tags}')
+        # print(f'\nExiste 1 tag na lista {lista_tags}')
         assert corpo_do_resultado_obtido['tags'][0]['name'] == lista_tags[1]
-
