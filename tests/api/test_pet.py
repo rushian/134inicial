@@ -26,7 +26,7 @@ def teste_incluir_pet():
 
         url=url,
         headers=headers,
-        data=open('/vendors\\json\\pet1.json')
+        data=open(f'/vendors{os.sep}json{os.sep}pet1.json')
     )
 
     # valida
