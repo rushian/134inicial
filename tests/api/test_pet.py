@@ -137,26 +137,19 @@ def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tag
     # Os dados de entrada proveem do arquivo massa_incluir_pets.csv
     # 1.1.1 Montagem do JSON dinamico
     corpo_json = '{'
-    corpo_json += f'    "id": "{id}",'
+    corpo_json += f'    "id": "{pet_id}",'
     corpo_json += '    "category": {'
     corpo_json += f'        "id": "{category_id}",'
     corpo_json += f'        "name": "{category_name}"'
     corpo_json += '    },'
-    corpo_json += f'    "name": "{name}",'
+    corpo_json += f'    "name": "{pet_name}",'
     corpo_json += '    "photoUrls": ['
-    corpo_json += f'        "{photoUrls1}",'
-    corpo_json += f'        "{photoUrls2}",'
-    corpo_json += f'        "{photoUrls3}",'
-    corpo_json += f'        "{photoUrls4}"'
+    corpo_json += '        "string"'
     corpo_json += '    ],'
     corpo_json += '    "tags": ['
     corpo_json += '        {'
-    corpo_json += f'            "id": "{tags_id1}",'
-    corpo_json += f'            "name": "{tags_name1}"'
-    corpo_json += '        },'
-    corpo_json += '        {'
-    corpo_json += f'            "id": "{tags_id2}",'
-    corpo_json += f'            "name": "{tags_name2}"'
+    corpo_json += f'            "id": "{tags_id}",'
+    corpo_json += f'            "name": "{tags_name}"'
     corpo_json += '        }'
     corpo_json += '    ],'
     corpo_json += f'    "status": "{status}"'
@@ -185,9 +178,12 @@ def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tag
     assert corpo_do_resultado_obtido['category']['name'] == category_name
     assert corpo_do_resultado_obtido['tags'][0]['name'] == tags_name
 
-#comando para determinar diretorio onde inicial a referencia de caminho relativo
+
+# comando para determinar diretorio onde inicia a referencia de caminho relativo
 os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
-#lita utilizando o separador do sistema para caminho relativo
+
+
+# lita utilizando o separador do sistema para caminho relativo
 @pytest.mark.parametrize('pet_id,category_id,category_name,pet_name,tags,status',
                          ler_csv(f'vendors{os.sep}csv{os.sep}massa_incluir_pet_multitags.csv'))
 def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_name, pet_name, tags, status):
@@ -273,4 +269,3 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
     else:
         # print(f'\nExiste 1 tag na lista {lista_tags}')
         assert corpo_do_resultado_obtido['tags'][0]['name'] == lista_tags[1]
-
