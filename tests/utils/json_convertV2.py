@@ -55,4 +55,6 @@ def converte_json(arquivo_json):
 
 
 def test_convert_json():
-    converte_json(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}vendors{os.sep}json{os.sep}pet1.json')
+    # comando para determinar diretorio onde inicial a referencia de caminho relativo
+    os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
+    converte_json(f'vendors{os.sep}json{os.sep}pet1.json')
