@@ -1,8 +1,10 @@
 import os
 import shutil
-#import sys
+
+
+# import sys
 # sys.dont_write_bytecode = False
-#sys.pycache_prefix = None
+# sys.pycache_prefix = None
 
 
 def limpar_cache(pasta_projeto):
