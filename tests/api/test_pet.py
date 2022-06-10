@@ -1,6 +1,8 @@
 # bibliotecas
 import json
 import os
+from pathlib import Path
+
 import pytest
 import requests
 from tests.utils.file_manager import ler_csv
@@ -8,7 +10,8 @@ from tests.utils.file_manager import ler_csv
 # variaveis publicas
 url = 'https://petstore.swagger.io/v2/pet'
 headers = {'Content-Type': 'application/json'}
-
+caminho_json = str(Path.cwd().parents[1]) + os.sep + 'vendors' + os.sep + 'json' + os.sep
+caminho_csv  = str(Path.cwd().parents[1]) + os.sep + 'vendors' + os.sep + 'csv' + os.sep
 
 # definicoes de funcoes (defs)
 def teste_incluir_pet():
@@ -26,7 +29,7 @@ def teste_incluir_pet():
 
         url=url,
         headers=headers,
-        data=open(f'/vendors{os.sep}json{os.sep}pet1.json')
+        data=open(f'{caminho_json}pet1.json')
     )
 
     # valida
@@ -88,13 +91,14 @@ def teste_alterar_pet():
     resultado_obtido = requests.put(
         url=url,
         headers=headers,
-        data=open('/vendors\\json\\pet2.json')
+        data=open(f'{caminho_json}pet2.json')
     )
 
     # valida
     print(f'\nResultado obtido: ', resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=4))
+
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == pet_id_esperado
     assert corpo_do_resultado_obtido['name'] == pet_nome_esperado
@@ -130,7 +134,7 @@ def teste_excluir_pet():
 
 
 @pytest.mark.parametrize('pet_id,category_id,category_name,pet_name,tags_id,tags_name,status',
-                         ler_csv('E:\\dev\\pyCharm\\134inicial\\vendors\\csv\\massa_incluir_pet.csv'))
+                         ler_csv(f'{caminho_csv}massa_incluir_pet.csv'))
 def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tags_id, tags_name, status):
     # 1. Configura
     # 1.1 Dados de entrada
@@ -172,6 +176,7 @@ def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tag
     print(f'\nResultado obtido: ', resultado_obtido)
     corpo_do_resultado_obtido = resultado_obtido.json()
     print(f'\nCorpo do resultado obtido: \n', json.dumps(corpo_do_resultado_obtido, indent=4))
+
     assert resultado_obtido.status_code == status_code_esperado
     assert corpo_do_resultado_obtido['id'] == int(pet_id)
     assert corpo_do_resultado_obtido['name'] == pet_name
@@ -180,18 +185,21 @@ def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tag
 
 
 # comando para determinar diretorio onde inicia a referencia de caminho relativo
-os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
+#os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
+
+#print('\n\n' + os.getcwd()[0:len(os.getcwd()) - 11])
+#os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
 
 
 # lita utilizando o separador do sistema para caminho relativo
 @pytest.mark.parametrize('pet_id,category_id,category_name,pet_name,tags,status',
-                         ler_csv(f'vendors{os.sep}csv{os.sep}massa_incluir_pet_multitags.csv'))
+                         ler_csv(f'{caminho_csv}massa_incluir_pet_multitags.csv'))
 def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_name, pet_name, tags, status):
     # 1. Configura
     # 1.1 Dados de entrada
     # Os dados de entrada proveem do arquivo massa_incluir_pets.csv
     # 1.1.1 Montagem do JSON dinamico
-    global itens_lista
+
     corpo_json = '{'
     corpo_json += f'"id":  "{pet_id}" ,'
     corpo_json += '"category": {'
@@ -267,5 +275,6 @@ def teste_incluir_pet_em_massa_com_multiplas_tags(pet_id, category_id, category_
             for j in range(2):
                 assert corpo_do_resultado_obtido['tags'][i]['name'] == sub_lista_tags[i][1]
     else:
-        # print(f'\nExiste 1 tag na lista {lista_tags}')
+        print(f'\nExiste 1 tag na lista {lista_tags}')
+
         assert corpo_do_resultado_obtido['tags'][0]['name'] == lista_tags[1]

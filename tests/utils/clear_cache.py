@@ -31,4 +31,5 @@ def test_limpar_cache():
     # executa
     resultado_obtido = limpar_cache(pasta_projeto)
     # verifica
+
     assert resultado_obtido == resultado_esperado
