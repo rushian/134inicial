@@ -1,10 +1,6 @@
 import os
 import shutil
-
-
-# import sys
-# sys.dont_write_bytecode = False
-# sys.pycache_prefix = None
+from pathlib import Path
 
 
 def limpar_cache(pasta_projeto):
@@ -21,7 +17,7 @@ def limpar_cache(pasta_projeto):
 
 def test_limpar_cache():
     # configura
-    pasta_projeto = 'E:\\dev\\pyCharm\\134inicial'
+    pasta_projeto = str(Path.cwd().parents[1])
     pastas_cache = 0
     for diretorio, subpastas, arquivos in os.walk(pasta_projeto):
         for subpasta in subpastas:

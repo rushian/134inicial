@@ -10,8 +10,8 @@ from tests.utils.file_manager import ler_csv
 # variaveis publicas
 url = 'https://petstore.swagger.io/v2/pet'
 headers = {'Content-Type': 'application/json'}
-caminho_json = str(Path.cwd().parents[1]) + os.sep + 'vendors' + os.sep + 'json' + os.sep
-caminho_csv  = str(Path.cwd().parents[1]) + os.sep + 'vendors' + os.sep + 'csv' + os.sep
+caminho_json = str(Path.cwd().parents[1].joinpath('vendors', 'json')) + os.sep
+caminho_csv  = str(Path.cwd().parents[1].joinpath('vendors', 'csv')) + os.sep
 
 # definicoes de funcoes (defs)
 def teste_incluir_pet():
@@ -185,7 +185,6 @@ def teste_incluir_pet_em_massa(pet_id, category_id, category_name, pet_name, tag
 
 
 # comando para determinar diretorio onde inicia a referencia de caminho relativo
-#os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
 
 #print('\n\n' + os.getcwd()[0:len(os.getcwd()) - 11])
 #os.chdir(f'E:{os.sep}dev{os.sep}pyCharm{os.sep}134inicial{os.sep}')
