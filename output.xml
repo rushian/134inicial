@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.4 on win32)" generated="20220621 17:01:47.020" rpa="false" schemaversion="3">
+<suite id="s1" name="appiumRobot" source="E:\dev\pyCharm\134inicial\tests\mobile\appiumRobot.robot">
+<test id="s1-t1" name="Test case name" line="24">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>${REMOTE_URL}</arg>
+<arg>platformName=${platformName}</arg>
+<arg>appium:automationName=${appium:automationName}</arg>
+<arg>appium:deviceName=${appium:deviceName}</arg>
+<arg>appium:appPackage=${appium:appPackage}</arg>
+<arg>appium:appActivity=${appium:appActivity}</arg>
+<arg>appium:ensureWebviewsHavePages=${appium:ensureWebviewsHavePages}</arg>
+<arg>appium:nativeWebScreenshot=${appium:nativeWebScreenshot}</arg>
+<arg>appium:newCommandTimeout=${appium:newCommandTimeout}</arg>
+<arg>appium:connectHardwareKeyboard=${appium:connectHardwareKeyboard}</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |</doc>
+<status status="PASS" starttime="20220621 17:01:47.661" endtime="20220621 17:02:26.039"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>accessibility_id=7</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220621 17:02:26.085" level="INFO">Clicking element 'accessibility_id=7'.</msg>
+<status status="PASS" starttime="20220621 17:02:26.079" endtime="20220621 17:02:27.557"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>id=com.google.android.calculator:id/op_mul</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220621 17:02:27.587" level="INFO">Clicking element 'id=com.google.android.calculator:id/op_mul'.</msg>
+<status status="PASS" starttime="20220621 17:02:27.582" endtime="20220621 17:02:28.705"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>id=com.google.android.calculator:id/digit_9</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220621 17:02:28.722" level="INFO">Clicking element 'id=com.google.android.calculator:id/digit_9'.</msg>
+<status status="PASS" starttime="20220621 17:02:28.717" endtime="20220621 17:02:29.729"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>id=com.google.android.calculator:id/digit_9</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220621 17:02:29.742" level="INFO">Clicking element 'id=com.google.android.calculator:id/digit_9'.</msg>
+<status status="PASS" starttime="20220621 17:02:29.738" endtime="20220621 17:02:30.600"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>id=com.google.android.calculator:id/eq</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20220621 17:02:30.621" level="INFO">Clicking element 'id=com.google.android.calculator:id/eq'.</msg>
+<status status="PASS" starttime="20220621 17:02:30.616" endtime="20220621 17:02:31.903"/>
+</kw>
+<kw name="Element Should Contain Text" library="AppiumLibrary">
+<arg>id=com.google.android.calculator:id/result_final</arg>
+<arg>693</arg>
+<arg>'teste msg'</arg>
+<doc>Verifies element identified by ``locator`` contains text ``expected``.</doc>
+<msg timestamp="20220621 17:02:31.936" level="INFO">Verifying element 'id=com.google.android.calculator:id/result_final' contains text '693'.</msg>
+<status status="PASS" starttime="20220621 17:02:31.931" endtime="20220621 17:02:32.232"/>
+</kw>
+<kw name="Quit Application" library="AppiumLibrary" type="TEARDOWN">
+<doc>Quit application. Application can be quit while Appium session is kept alive.
+This keyword can be used to close application during test case or between test cases.</doc>
+<status status="PASS" starttime="20220621 17:02:32.273" endtime="20220621 17:02:33.629"/>
+</kw>
+<status status="PASS" starttime="20220621 17:01:47.660" endtime="20220621 17:02:33.678"/>
+</test>
+<status status="PASS" starttime="20220621 17:01:47.026" endtime="20220621 17:02:33.751"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="appiumRobot">appiumRobot</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
