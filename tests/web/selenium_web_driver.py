@@ -35,13 +35,13 @@ class Testes:
     lista_de_valores = [
         ('São Paolo', 'New York', 'firefox'),
         ('Boston', 'New York', 'chrome'),
-        ('San Diego', 'New York', 'firefox')
+        ('San Diego', 'New York', 'opera')
     ]
 
     @pytest.mark.parametrize('origem,destino,browser', lista_de_valores)
     def testar_comprar_passagem(self, origem, destino, browser):
         # e2e / end to end / ponta a ponta
-        print(browser)
+
         # Trouxe o setup_method / Iniciação para cá
         match browser:
             case 'chrome':
@@ -49,7 +49,11 @@ class Testes:
             case 'firefox':
                 options = Options()
                 options.binary_location = r'C:\Users\Luciano\AppData\Local\Mozilla Firefox\firefox.exe'
-                self.driver = webdriver.Firefox(options=options)
+                self.driver = webdriver.Firefox(options=options, executable_path=r'E:\dev\pyCharm\134inicial\vendors\drivers\geckodriver.exe')
+            case 'opera':
+                options = Options()
+                options.binary_location = r'C:\Users\Luciano\AppData\Local\Programs\Opera GX\launcher.exe'
+                self.driver = webdriver.Opera(options=options)
 
         # Pagina Inicial (Home)
         # Executa / Valida

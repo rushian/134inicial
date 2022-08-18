@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -34,7 +36,8 @@ class TestComprarPassagem:
         assert self.driver.find_element(By.CSS_SELECTOR, "h1").text == "Thank you for your purchase today!"
         assert self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(2)").text == "555 USD"
 
-
+    def test_print(self):
+        print (datetime.now().strftime('\n%H:%M - %a, %d %b %Y'))
     def test_verifica_passagens(self):
         self.driver.get("https://www.blazedemo.com/")
         self.driver.set_window_size(1382, 754)
@@ -62,7 +65,7 @@ class TestComprarPassagem:
         assert self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(2) > td:nth-child(2)").text == "PendingCapture"
         assert self.driver.title == "BlazeDemo Confirmation"
         assert self.driver.find_element(By.CSS_SELECTOR,
-                                        "tr:nth-child(7) > td:nth-child(2)").text.__contains__("Wed, 15 Jun 2022")
+                                        "tr:nth-child(7) > td:nth-child(2)").text.__contains__(datetime.now().strftime('%a, %d %b %Y'))
 
 
     def test_login_positivo(self):
